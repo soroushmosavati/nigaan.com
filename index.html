@@ -299,9 +299,52 @@
         </div>
     </section>
 
-    <footer id="contact" class="bg-slate-950 border-t border-slate-900 py-12">
+    <section id="contact" class="py-24 bg-slate-900 border-t border-slate-800">
+        <div class="max-w-2xl mx-auto px-6 lg:px-8">
+            <div class="mb-12">
+                <h2 class="text-sm font-mono text-cyan-400 tracking-widest mb-3 uppercase">~ / initialize_contact</h2>
+                <h3 class="text-3xl font-bold text-white mb-4">Let's talk about your AI governance needs.</h3>
+                <p class="text-slate-400">Send us a message and we'll get back to you shortly.</p>
+            </div>
+
+            <form id="contact-form" class="space-y-6" novalidate>
+                <!-- Honeypot field: hidden from real visitors, bots tend to fill it -->
+                <div class="absolute -left-[9999px] opacity-0" aria-hidden="true">
+                    <label for="company">Company</label>
+                    <input type="text" id="company" name="company" tabindex="-1" autocomplete="off">
+                </div>
+                <input type="hidden" id="ts" name="ts">
+
+                <div>
+                    <label for="name" class="block text-xs font-mono text-slate-500 mb-2 uppercase tracking-wider">Name</label>
+                    <input type="text" id="name" name="name" required maxlength="200"
+                        class="w-full bg-slate-950 border border-slate-800 focus:border-cyan-500 outline-none px-4 py-3 text-white rounded-sm transition-colors">
+                </div>
+                <div>
+                    <label for="email" class="block text-xs font-mono text-slate-500 mb-2 uppercase tracking-wider">Email</label>
+                    <input type="email" id="email" name="email" required maxlength="200"
+                        class="w-full bg-slate-950 border border-slate-800 focus:border-cyan-500 outline-none px-4 py-3 text-white rounded-sm transition-colors">
+                </div>
+                <div>
+                    <label for="message" class="block text-xs font-mono text-slate-500 mb-2 uppercase tracking-wider">Message</label>
+                    <textarea id="message" name="message" required maxlength="5000" rows="5"
+                        class="w-full bg-slate-950 border border-slate-800 focus:border-cyan-500 outline-none px-4 py-3 text-white rounded-sm transition-colors"></textarea>
+                </div>
+
+                <button type="submit" id="contact-submit"
+                    class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-sm text-slate-950 bg-cyan-400 hover:bg-cyan-300 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+                    <span id="contact-submit-label">Send_Message</span>
+                    <span class="font-mono ml-2">&gt;</span>
+                </button>
+
+                <p id="contact-status" class="text-sm font-mono mt-2" role="status"></p>
+            </form>
+        </div>
+    </section>
+
+    <footer class="bg-slate-950 border-t border-slate-900 py-12">
         <div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
-            
+
             <div class="mb-6 md:mb-0 text-center md:text-left">
                 <!-- Footer Logo -->
                 <div class="flex items-center justify-center md:justify-start mb-2">
@@ -312,16 +355,70 @@
             </div>
 
             <div class="flex space-x-6 text-sm font-mono text-slate-500">
-                <a href="mailto:info@nigaan.com" class="hover:text-cyan-400 transition-colors">info@nigaan.com</a>
+                <a href="#contact" class="hover:text-cyan-400 transition-colors">Contact</a>
                 <span class="text-slate-800">|</span>
                 <span class="hover:text-cyan-400 transition-colors cursor-default">Toronto, ON</span>
             </div>
-            
+
         </div>
         <div class="max-w-7xl mx-auto px-6 lg:px-8 mt-8 text-center md:text-left">
             <p class="text-xs text-slate-700">&copy; 2026 Nigaan AI Consulting. All rights reserved. Terminal protocol initialized.</p>
         </div>
     </footer>
+
+    <script>
+        (function () {
+            var form = document.getElementById('contact-form');
+            var status = document.getElementById('contact-status');
+            var submitBtn = document.getElementById('contact-submit');
+            var submitLabel = document.getElementById('contact-submit-label');
+
+            // Timestamp lets the server reject submissions that arrive implausibly fast (bots).
+            document.getElementById('ts').value = Date.now();
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                if (form.company.value) {
+                    // Honeypot tripped — pretend to succeed, drop silently.
+                    status.textContent = 'Message sent. We will be in touch shortly.';
+                    status.className = 'text-sm font-mono mt-2 text-cyan-400';
+                    form.reset();
+                    return;
+                }
+
+                var payload = {
+                    name: form.name.value.trim(),
+                    email: form.email.value.trim(),
+                    message: form.message.value.trim(),
+                    company: form.company.value,
+                    ts: form.ts.value
+                };
+
+                submitBtn.disabled = true;
+                submitLabel.textContent = 'Sending...';
+                status.textContent = '';
+
+                fetch('/api/contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                }).then(function (res) {
+                    if (!res.ok) throw new Error('request failed');
+                    status.textContent = 'Message sent. We will be in touch shortly.';
+                    status.className = 'text-sm font-mono mt-2 text-cyan-400';
+                    form.reset();
+                    document.getElementById('ts').value = Date.now();
+                }).catch(function () {
+                    status.textContent = 'Something went wrong — please try again in a moment.';
+                    status.className = 'text-sm font-mono mt-2 text-red-400';
+                }).finally(function () {
+                    submitBtn.disabled = false;
+                    submitLabel.textContent = 'Send_Message';
+                });
+            });
+        })();
+    </script>
 
 </body>
 </html>
