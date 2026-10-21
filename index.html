@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nigaan | AI Consulting & Governance</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace'],
+                    },
+                    colors: {
+                        slate: {
+                            850: '#151f32',
+                            900: '#0f172a',
+                            950: '#020617',
+                        },
+                        cyan: {
+                            400: '#22d3ee',
+                            500: '#06b6d4',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Terminal Grid Background */
+        .bg-grid-pattern {
+            background-image: linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        
+        /* Blinking cursor animation */
+        .cursor-blink {
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Hover bracket effects */
+        .hover-bracket-group:hover .hover-bracket {
+            color: #22d3ee;
+            transform: translateX(0);
+            opacity: 1;
+        }
+        .hover-bracket-left { transform: translateX(10px); opacity: 0; transition: all 0.3s ease; }
+        .hover-bracket-right { transform: translateX(-10px); opacity: 0; transition: all 0.3s ease; }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-300 font-sans antialiased selection:bg-cyan-500 selection:text-white">
+
+    <nav class="fixed w-full z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo Combining Concept 1 & 4 -->
+                <div class="flex-shrink-0 flex items-center cursor-pointer">
+                    <span class="text-cyan-400 font-mono text-xl mr-2 font-bold">&gt;</span>
+                    <span class="text-slate-500 font-mono text-2xl font-light mr-1">[</span>
+                    <span class="text-white font-sans text-2xl font-bold tracking-tight lowercase">nigaan</span>
+                    <span class="text-slate-500 font-mono text-2xl font-light ml-1">]</span>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#vision" class="hover:text-cyan-400 px-3 py-2 text-sm font-medium transition-colors">Vision</a>
+                        <a href="#principles" class="hover:text-cyan-400 px-3 py-2 text-sm font-medium transition-colors">Principles</a>
+                        <a href="#services" class="hover:text-cyan-400 px-3 py-2 text-sm font-medium transition-colors">Audit Services</a>
+                        <a href="#contact" class="bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 hover:bg-cyan-500 hover:text-white px-4 py-2 rounded-sm text-sm font-mono transition-all">
+                            Initialize_Contact
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-grid-pattern">
+        <!-- Subtle background glow -->
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-cyan-900/20 blur-3xl opacity-50"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-72 h-72 rounded-full bg-blue-900/20 blur-3xl opacity-50"></div>
+
+        <div class="relative max-w-7xl mx-auto px-6 lg:px-8 z-10 text-center lg:text-left">
+            <div class="lg:w-2/3">
+                <div class="inline-flex items-center space-x-2 bg-slate-900 border border-slate-800 rounded-full px-4 py-1.5 mb-8">
+                    <span class="flex h-2 w-2 rounded-full bg-cyan-400"></span>
+                    <span class="text-xs font-mono text-slate-400 uppercase tracking-wider">Leading what comes next</span>
+                </div>
+                
+                <h1 class="text-4xl md:text-5xl lg:text-7xl font-bold text-white tracking-tight leading-tight mb-6">
+                    Responsible AI <br/>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
+                        strategy & governance.
+                    </span>
+                </h1>
+                
+                <p class="mt-4 text-lg md:text-xl text-slate-400 max-w-2xl font-light mb-10 border-l-2 border-slate-800 pl-4">
+                    We help organizations build and adopt trustworthy AI that is explainable, secure, audit-ready, and practical — turning complex intelligence into clear, actionable outcomes.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                    <a href="#services" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-sm text-slate-950 bg-cyan-400 hover:bg-cyan-300 transition-colors">
+                        Explore Audit Services
+                        <span class="font-mono ml-2">&gt;</span>
+                    </a>
+                    <a href="#vision" class="inline-flex items-center justify-center px-6 py-3 border border-slate-700 text-base font-medium rounded-sm text-white hover:bg-slate-800 transition-colors">
+                        Our Vision
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="vision" class="py-24 bg-slate-900 border-y border-slate-800">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-sm font-mono text-cyan-400 tracking-widest mb-3 uppercase">~ / who_we_are</h2>
+                    <h3 class="text-3xl font-bold text-white mb-6">Taking a human-centered approach to AI transformation.</h3>
+                    <p class="text-slate-400 mb-6 leading-relaxed">
+                        Nigaan means leading what comes next. We help clients adopt AI responsibly, without sacrificing trust, clarity, or control. Our work combines strategy, governance, risk management, and implementation guidance.
+                    </p>
+                    <div class="bg-slate-950 p-6 rounded-sm border border-slate-800 font-mono text-sm">
+                        <div class="text-slate-500 mb-2"># Our Vision Statement</div>
+                        <div class="text-cyan-300">
+                            > To make advanced machine intelligence transparent, equitable, and universally accessible — empowering individuals and organizations to solve complex challenges with confidence and agency.<span class="cursor-blink">_</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <!-- Outcomes -->
+                    <div class="bg-slate-850 p-6 rounded-sm border border-slate-800">
+                        <div class="text-cyan-400 mb-4 font-mono text-xl">01</div>
+                        <h4 class="text-white font-medium mb-2">Clear AI Roadmap</h4>
+                        <p class="text-sm text-slate-400">Strategic pathways designed for practical, safe scalability.</p>
+                    </div>
+                    <div class="bg-slate-850 p-6 rounded-sm border border-slate-800">
+                        <div class="text-cyan-400 mb-4 font-mono text-xl">02</div>
+                        <h4 class="text-white font-medium mb-2">Reduced Risk</h4>
+                        <p class="text-sm text-slate-400">Minimize black-box exposure through rigorous methodologies.</p>
+                    </div>
+                    <div class="bg-slate-850 p-6 rounded-sm border border-slate-800">
+                        <div class="text-cyan-400 mb-4 font-mono text-xl">03</div>
+                        <h4 class="text-white font-medium mb-2">Audit-Ready Controls</h4>
+                        <p class="text-sm text-slate-400">Frameworks built to withstand regulatory scrutiny.</p>
+                    </div>
+                    <div class="bg-slate-850 p-6 rounded-sm border border-slate-800">
+                        <div class="text-cyan-400 mb-4 font-mono text-xl">04</div>
+                        <h4 class="text-white font-medium mb-2">Confident Adoption</h4>
+                        <p class="text-sm text-slate-400">Faster deployment grounded in structural trust.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="principles" class="py-24 bg-slate-950">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-sm font-mono text-cyan-400 tracking-widest mb-3 uppercase">~ / core_principles</h2>
+                <h3 class="text-3xl font-bold text-white mb-4">The Foundation of Trust</h3>
+                <p class="text-slate-400">How we ensure AI amplifies people and decision quality, rather than eroding agency or accountability.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Principle 1 -->
+                <div class="group border border-slate-800 bg-slate-900 p-8 hover:border-cyan-500/50 transition-colors">
+                    <h4 class="text-xl font-bold text-white mb-3 flex items-center">
+                        <span class="text-cyan-400 font-mono mr-2 text-sm">&gt;</span> Transparent
+                    </h4>
+                    <p class="text-sm text-slate-400 leading-relaxed">
+                        Explainable decisions, clear data flows, and honest communication about AI limits and capabilities.
+                    </p>
+                </div>
+
+                <!-- Principle 2 -->
+                <div class="group border border-slate-800 bg-slate-900 p-8 hover:border-cyan-500/50 transition-colors">
+                    <h4 class="text-xl font-bold text-white mb-3 flex items-center">
+                        <span class="text-cyan-400 font-mono mr-2 text-sm">&gt;</span> Equitable
+                    </h4>
+                    <p class="text-sm text-slate-400 leading-relaxed">
+                        Bias-aware design and evaluation so value is shared fairly across teams, users, and broader markets.
+                    </p>
+                </div>
+
+                <!-- Principle 3 -->
+                <div class="group border border-slate-800 bg-slate-900 p-8 hover:border-cyan-500/50 transition-colors">
+                    <h4 class="text-xl font-bold text-white mb-3 flex items-center">
+                        <span class="text-cyan-400 font-mono mr-2 text-sm">&gt;</span> Accessible
+                    </h4>
+                    <p class="text-sm text-slate-400 leading-relaxed">
+                        Low-friction adoption through intuitive tools, clear workflows, and highly practical enablement.
+                    </p>
+                </div>
+
+                <!-- Principle 4 -->
+                <div class="group border border-slate-800 bg-slate-900 p-8 hover:border-cyan-500/50 transition-colors">
+                    <h4 class="text-xl font-bold text-white mb-3 flex items-center">
+                        <span class="text-cyan-400 font-mono mr-2 text-sm">&gt;</span> Human-Centered
+                    </h4>
+                    <p class="text-sm text-slate-400 leading-relaxed">
+                        AI should amplify people and decision quality — not erode agency, human judgment, or accountability.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-24 bg-slate-900 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="mb-16 flex flex-col md:flex-row md:items-end justify-between">
+                <div class="max-w-2xl">
+                    <h2 class="text-sm font-mono text-cyan-400 tracking-widest mb-3 uppercase">~ / audit_services</h2>
+                    <h3 class="text-3xl md:text-4xl font-bold text-white">Safe, effective AI adoption.</h3>
+                </div>
+                <div class="mt-6 md:mt-0">
+                    <p class="text-slate-400 font-mono text-sm">[ system.audit_protocols_loaded ]</p>
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                <!-- Service 1 -->
+                <div class="hover-bracket-group bg-slate-950 border border-slate-800 p-6 md:p-8 flex flex-col md:flex-row md:items-center justify-between transition-all hover:bg-slate-850 cursor-default">
+                    <div class="md:w-1/3 mb-4 md:mb-0">
+                        <h4 class="text-xl font-bold text-white flex items-center font-mono">
+                            <span class="hover-bracket hover-bracket-left font-light mr-2 text-slate-600">[</span>
+                            Readiness Audit
+                            <span class="hover-bracket hover-bracket-right font-light ml-2 text-slate-600">]</span>
+                        </h4>
+                    </div>
+                    <div class="md:w-2/3">
+                        <p class="text-slate-400 border-l-2 border-slate-800 pl-4">
+                            Assess your overarching strategy, target operating model, and data maturity before deploying intelligence at scale.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="hover-bracket-group bg-slate-950 border border-slate-800 p-6 md:p-8 flex flex-col md:flex-row md:items-center justify-between transition-all hover:bg-slate-850 cursor-default">
+                    <div class="md:w-1/3 mb-4 md:mb-0">
+                        <h4 class="text-xl font-bold text-white flex items-center font-mono">
+                            <span class="hover-bracket hover-bracket-left font-light mr-2 text-slate-600">[</span>
+                            Model Risk Audit
+                            <span class="hover-bracket hover-bracket-right font-light ml-2 text-slate-600">]</span>
+                        </h4>
+                    </div>
+                    <div class="md:w-2/3">
+                        <p class="text-slate-400 border-l-2 border-slate-800 pl-4">
+                            Comprehensive review of internal policies, human oversight mechanisms, model explainability, and accountability tracking.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="hover-bracket-group bg-slate-950 border border-slate-800 p-6 md:p-8 flex flex-col md:flex-row md:items-center justify-between transition-all hover:bg-slate-850 cursor-default">
+                    <div class="md:w-1/3 mb-4 md:mb-0">
+                        <h4 class="text-xl font-bold text-white flex items-center font-mono">
+                            <span class="hover-bracket hover-bracket-left font-light mr-2 text-slate-600">[</span>
+                            Compliance Audit
+                            <span class="hover-bracket hover-bracket-right font-light ml-2 text-slate-600">]</span>
+                        </h4>
+                    </div>
+                    <div class="md:w-2/3">
+                        <p class="text-slate-400 border-l-2 border-slate-800 pl-4">
+                            Validate specific data handling procedures, strict security controls, and alignment with emerging AI regulatory frameworks.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="hover-bracket-group bg-slate-950 border border-slate-800 p-6 md:p-8 flex flex-col md:flex-row md:items-center justify-between transition-all hover:bg-slate-850 cursor-default">
+                    <div class="md:w-1/3 mb-4 md:mb-0">
+                        <h4 class="text-xl font-bold text-white flex items-center font-mono">
+                            <span class="hover-bracket hover-bracket-left font-light mr-2 text-slate-600">[</span>
+                            Solution Audit
+                            <span class="hover-bracket hover-bracket-right font-light ml-2 text-slate-600">]</span>
+                        </h4>
+                    </div>
+                    <div class="md:w-2/3">
+                        <p class="text-slate-400 border-l-2 border-slate-800 pl-4">
+                            Evaluate vendor tools, proprietary models, and technical implementation options rigorously prior to organizational scale-up.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="bg-slate-950 border-t border-slate-900 py-12">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            
+            <div class="mb-6 md:mb-0 text-center md:text-left">
+                <!-- Footer Logo -->
+                <div class="flex items-center justify-center md:justify-start mb-2">
+                    <span class="text-cyan-400 font-mono text-lg mr-2 font-bold">&gt;</span>
+                    <span class="text-white font-sans text-xl font-bold tracking-tight lowercase">nigaan</span>
+                </div>
+                <p class="text-slate-500 text-sm">Leading what comes next.</p>
+            </div>
+
+            <div class="flex space-x-6 text-sm font-mono text-slate-500">
+                <a href="mailto:info@nigaan.com" class="hover:text-cyan-400 transition-colors">info@nigaan.com</a>
+                <span class="text-slate-800">|</span>
+                <span class="hover:text-cyan-400 transition-colors cursor-default">Toronto, ON</span>
+            </div>
+            
+        </div>
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 mt-8 text-center md:text-left">
+            <p class="text-xs text-slate-700">&copy; 2026 Nigaan AI Consulting. All rights reserved. Terminal protocol initialized.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
